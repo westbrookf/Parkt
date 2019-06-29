@@ -18,11 +18,11 @@ class ParkedBtn extends Component {
     const key = event.target.name;
     const value = event.target.value;
 
-    let tempLoc = {...this.state.location};
+    let tempLoc = {...this.state.savedLocation};
     tempLoc[key] = value;
 
     this.setState({
-      location:tempLoc
+      savedLocation:tempLoc
     })
   }
 
@@ -63,8 +63,8 @@ class ParkedBtn extends Component {
             <DialogContent className="floor-modal-form-container">
                 <form  className="floor-form" onSubmit={this.parkedCarSubmitHandler}>
                   <div className="hidden-inputs">
-                    <input className="lat-input" name="lat" onChange={this.floorChangeHanlder} value={this.props.currentLocation.lat} type="text"></input>
-                    <input className="lng-input" name="lng" onChange={this.floorChangeHandler} value={ this.props.currentLocation.lng} type="text" />
+                    <input className="lat-input" name="lat" onChange={this.floorChangeHanlder} value={this.state.savedLocation.lat} />
+                    <input className="lng-input" name="lng" onChange={this.floorChangeHandler} value={ this.state.savedLocation.lng}  />
                   </div>
                   <div className="floor-level-input-container">
                     <label for="floor" className="floor-level-label"><strong>floor #</strong></label>
