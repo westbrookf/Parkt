@@ -1,0 +1,44 @@
+@import '../../styles/scss/Mixins/GlobalMixins.scss';
+.signup-container{
+    height: 98vh;
+    width: 100vw;
+}
+.sign-up-form-style{
+  height: 98vh;
+  width: 100%;
+  opacity: 0;
+  transform: scale(0);
+}
+  .form-row{
+    display: block;
+  }
+  .signup-input{
+    width: 99%;
+    margin-top: 18px;
+    background-color: transparent;
+    border: none;
+    border-bottom: 2px solid #86868683;
+    color: #fff;
+  }
+  .signup-input::placeholder{
+    font-size: 18px;
+    color: #dadada;
+  }
+  // .form-control:hover{
+  //   /* box-shadow: 0 0 0 1px rgba(0,0,0,0.15), 0 6px 8px rgba(0,0,0,0.2); */
+  // }
+  .sign-up-title{ 
+    color: #f7f7f7;
+    font-size: 32px;
+    text-align:center;
+    width: 100%;
+    margin-top: 30px;
+  }
+  .signup-submit-btn{
+    margin-top: 20px;
+  }
+  /* Container Class styling*/
+  .container{
+    // width: 680px;
+    @include Display(column, unset, unset);
+  }

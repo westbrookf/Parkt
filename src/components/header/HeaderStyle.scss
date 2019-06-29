@@ -1,0 +1,25 @@
+@import '../../styles/scss/Mixins/GlobalMixins.scss';
+
+.header-container{
+    height: 12vh;
+    width: 100vw;
+    position: absolute;
+    z-index:99;
+}
+.main-header{
+    height: 100%;
+    width: 100vw;
+    background-color: transparent;
+    @include Display(row, unset, center);
+}
+.header-logo{
+    background-image: url(../../images/LogoTwo.png);
+    background-size: cover;
+    background-position: center;
+    height: 50px;
+    width: 20%;
+    // z-index: 99;
+    margin-left: 13px;
+    // margin-top: 20px;
+    cursor: pointer;
+}
