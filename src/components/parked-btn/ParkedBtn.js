@@ -6,7 +6,7 @@ import { props } from 'recompose';
 import  { Button, Dialog, DialogTitle, DialogContent, DialogActions}  from 'react-mdl';
 import axios from 'axios';
 import { compose, withProps, lifecycle } from 'recompose';
-import { google, withScriptjs, withGoogleMap, GoogleMap, DirectionsRenderer,
+import { google, withScriptjs, withGoogleMap, GoogleMap, DirectionsRenderer, Marker
 } from 'react-google-maps';
 
 //Component Imports
@@ -117,36 +117,13 @@ class ParkedBtn extends Component {
     });
 
   }
-  //GET DIRECTIONS TO VEHICLE
-  state = {
-    directions: null,
-    originLat: position.coords.latitude,
-    originLng: position.coords.longitude
-  };
-
-  componentDidMount() {
-    const directionsService = new google.maps.DirectionsService();
-
-    const origin = { lat:currentLatLng.lat, lng:currentLatLng.lng };
-    const destination = { lat:this.state.savedLocation.lat, lng: this.state.savedLocation.lng };
-
-    directionsService.route(
-      {
-        origin: origin,
-        destination: destination,
-        travelMode: google.maps.TravelMode.DRIVING
-      },
-      (result, status) => {
-        if (status === google.maps.DirectionsStatus.OK) {
-          this.setState({
-            directions: result
-          });
-        } else {
-          console.error(`error fetching directions ${result}`);
-        }
-      }
-    );
+  calculatRoute(){
   }
+  //GET DIRECTIONS TO VEHICLE
+          showDirections = () =>{
+            console.log("directions", this.calculatRoute())
+            this.calculatRoute();
+          }
 
   render() {
     const parkedUser = localStorage.getItem("parkedUser");

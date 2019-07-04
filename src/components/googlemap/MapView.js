@@ -1,19 +1,18 @@
 import React, { Component } from 'react'
 import {compose, withProps } from 'recompose'
-import { withScriptjs, withGoogleMap, GoogleMap, Marker, google, Polyline, lineSymbol} from 'react-google-maps'
+import { withScriptjs, withGoogleMap, GoogleMap, Marker, google, lifecycle, DirectionsRenderer, Polyline} from 'react-google-maps'
 import MapStyles from '../map-styles/MapStyles';
 
 import '../googlemap/MapStyles.scss';
-class MapView extends Component{
-    
-    viewMap = compose(
+
+const MapView = compose(
         withProps({
         googleMapURL: "`https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places",
         loadingElement: <div style={{ height: `100%`}} />,
         containerElement: <div style={{ height: `100vh`}} />,
         mapElement: <div style={{ height: `100%`}} />,
     }),
-    withScriptjs,withGoogleMap)((props) =>
+    withScriptjs,withGoogleMap, )((props) =>
     <GoogleMap 
         defaultZoom={18}
         defaultCenter={{ lat: props.currentLocation.lat,lng: props.currentLocation.lng }}
@@ -23,7 +22,7 @@ class MapView extends Component{
             scaleControl: true,
             mapTypeControl: false,
             panControl: true,
-            zoomControl: false,
+            zoomControl: true,
             // rotateControl: false,
             fullscreenControl: false
         }}
@@ -35,28 +34,17 @@ class MapView extends Component{
         scaledSize={new window.google.maps.Size(45,45)}
         // animation={window.google.maps.Animation.BOUNCE}
         />}
-        {/* <MapDirectionsRenderer
-        places={{lat: props.currentLocation.lat, lng: props.currentLocation.lng}} 
-        travelMode={google.maps.TravelMode.WALKING}
-      /> */}
 
-        {/* <Polyline
-                path={pathCoordinates}
+        <Polyline
+                path={[{ lat: -34.397, lng: 150.644 }, { lat: -35.397, lng: 151.644 }]}
                 geodesic={true}
                 options={{
                     strokeColor: "#ff2527",
                     strokeOpacity: 0.75,
-                    strokeWeight: 2,
-                    icons: [
-                        {
-                            icon: lineSymbol,
-                            offset: "0",
-                            repeat: "20px"
-                        }
-                    ]
+                    strokeWeight: 2
                 }}
-        /> */}
+        />
     </GoogleMap>
 )
-}
+{/* <MapView /> */}
 export default MapView

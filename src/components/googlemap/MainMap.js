@@ -1,11 +1,19 @@
 import React, { Component }from 'react';
-import { withScriptjs, withGoogleMap, GoogleMap } from 'react-google-maps';
-import MapWrapper from './MapView';
+import { withScriptjs, withGoogleMap, GoogleMap, PermissionRequest, Permissions } from 'react-google-maps';
+import MapView from './MapView';
 import MapStyles from '../map-styles/MapStyles';
 import axios from 'axios';
 import ParkedBtn from '../parked-btn/ParkedBtn';
 
 class MainMap extends Component {
+
+    async componentDidMount() {
+        const { status } = await Permissions.getAsync(Permissions.LOCATION)
+        if(status != 'granted') {
+            const response = await PermissionRequest.askAsync(Permissions.LOCATION)
+        }
+    }
+
     constructor(props){
         super(props)
         this.state = {
@@ -58,7 +66,7 @@ class MainMap extends Component {
     render() {
         return(
             <React.Fragment>
-                <MapWrapper 
+                <MapView 
                     isMarkerShown={this.state.isMarkerShown}
                     onMarkerClick={this.handleMarkerClick}
                     currentLocation={this.state.currentLatLng}
