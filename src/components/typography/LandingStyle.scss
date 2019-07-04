@@ -1,0 +1,36 @@
+@import '../../styles/scss/Mixins/GlobalMixins.scss';
+.welcome-container{
+    width: 100%;
+    height: 100vh;
+    // margin-top: 10px;
+    overflow: hidden;
+    background: linear-gradient(to right, #2421217a, #2421217a),url(../../images//landingBg.jpg);    
+    background-size:cover;
+    background-position: center;
+}
+.text-container{
+    z-index: 99;
+    position: absolute;
+    width: 100%;
+    text-align: center;
+    margin-top: 80px;
+}
+.company-logo{
+    background-image: url(../../images/LogoTwo.png);
+    background-size: cover;
+    background-position: center;
+    height: 200px;
+    width: 250px;
+    margin-left: 40px;
+    z-index: 1000;
+}
+.landing-btn-container{
+    height: auto;
+    width: 90%;
+    @include Display(column, unset, unset);
+    margin-left: 15px;
+    Button{
+        margin-top: 16px;
+        background-color: #007bff !important;
+    }
+}

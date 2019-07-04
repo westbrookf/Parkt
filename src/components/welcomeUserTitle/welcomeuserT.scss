@@ -1,0 +1,24 @@
+@import '../../styles/scss/Mixins/GlobalMixins.scss';
+
+.user-title-container{
+    // text-align: center;
+    width: 33%;
+    margin-left: 5%;
+}
+
+.inline-style{
+    @include Display(column, unset, unset);
+    .small-title{
+        margin-top: 10px;
+        margin-bottom: -20px;
+        font-size: 14px;
+        text-transform: capitalize;
+        color: #007bff;
+        // width: 40px;
+    }
+    .large-title{
+        font-size: 22px;
+        color:  #ff5757;;
+        margin-top: 15px;
+    }
+}

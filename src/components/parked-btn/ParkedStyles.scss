@@ -1,0 +1,67 @@
+@import '../../styles/scss/Mixins/GlobalMixins.scss';
+
+
+.btn-container{
+    height: 40px;
+    width: 200px;
+    position: absolute;
+    // margin-top: -140px;
+    top: 80%;
+    left: 19%;
+}
+.floor-modal-container{
+    left: 8%;
+    height: 350px;
+    // width: 100%;
+    .floor-modal-title{
+        // background-color: #ff5757;
+        @include Background(url(../../images/garage-photo.jpg));
+        height: 180px;
+        width: 100%;
+        padding-top: 60px;
+        // border-bottom: 2px solid #007bff;
+        .d-title{
+            font-size: 26px;
+            margin-top: 0;
+            text-transform: capitalize;
+            color: #f7f7f7;
+        }
+    }
+    .floor-modal-form-container{
+        // border: 2px solid black;
+        width: 90%;
+        height: 160px;
+        // margin-top: 35px;
+        margin-left: 15px;
+        .floor-form{
+            .hidden-inputs{
+                display: none;
+            }
+            .floor-level-label{
+                font-size: 26px;
+                font-weight: 500;
+                text-transform: capitalize;
+                text-align: center;
+                width: 100%;
+            }
+            .widget-container{
+                @include Display(row,unset,unset);
+            }
+            .floor-level-input{
+                display: block;
+                height: 50px;
+                width: 50%;
+                margin-left: 50px;
+                margin-top: 6px;
+                // border: none;
+                font-size: 34px;
+                // font-weight: lighter;
+                color: #ff5757;
+                text-align: center;
+            }
+            .floor-submit-btn{
+                margin-top: 12px;
+            }
+        }
+    }
+}

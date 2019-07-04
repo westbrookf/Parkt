@@ -1,0 +1,26 @@
+.opn-nav-btn-container{
+    margin-left: 80px;
+}
+.mdl-button--icon{
+    height: 44px !important;
+    width: 44px !important;
+}
+.mdl-button--icon .material-icons{
+    font-size: 36px;
+    color: #ff5757;
+    left: 40% !important;
+}
+.menu-container{
+    margin-right: 40px;
+}
+//Menu Being Opened
+.mdl-menu__container{
+    right: 15px !important;
+}
+.mdl-menu__item a{
+    text-transform: capitalize;
+    color: #ff5757 !important;
+}
+.mdl-menu__item a:hover{
+    text-decoration: none;
+}

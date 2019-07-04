@@ -1,0 +1,46 @@
+@import '../../styles/scss/Mixins/GlobalMixins.scss';
+  .login-position{
+    // position: absolute;
+  }
+  .login-form-wrapper{
+    width: 100%;
+    // position: absolute;
+    margin-top: -545px;
+  }
+  .landing-login{
+    height: 98vh;
+    width: 100%;
+    opacity: 0;
+    transform: scale(0); 
+    padding-top: 120px;
+  }
+  .login-header{
+    font-size: 40px;
+    color: #f7f7f7;
+    width: 100%;
+    text-align: center;
+  }
+  .landing-login-form{
+    margin-top: 30px;
+    width: 100%;
+    height: auto;
+    // z-index: 99;
+    .log-in-input{
+      width: 90%;
+      margin-left: 5%;
+      margin-top: 12px;
+      background-color: transparent;
+      border: none;
+      border-bottom: 2px solid #8686868c;
+      color: #ececec;
+      font-size: 18px;
+    }
+    .log-in-input::placeholder{
+      color: #fff;
+    }
+  }
+  .login-submit-btn{
+    width: 90%;
+    margin-top: 20px;
+    margin-left: 15px;
+  }

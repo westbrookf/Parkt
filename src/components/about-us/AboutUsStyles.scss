@@ -1,0 +1,54 @@
+@import '../../styles/scss/Mixins/GlobalMixins.scss';
+
+.about-showcase{
+    height: 40vh;
+    max-width: 500px;
+    @include Background(url(../../images/aboutusShowcase.jpg));
+    border-bottom: 8px solid #007bff;
+    // background-attachment: fixed;
+    // background-position: top;
+    // transform: scale(.9);
+    .close-aboutus-container{
+        float: right;
+        height: auto;
+        width: auto;
+        margin: -16px 12px 0 0; 
+        h3{
+            font-size: 24px;
+            color: #f7f7f7;
+            transition: .3s;
+            cursor: pointer;
+        }
+        h3:hover{
+            color: red;
+        }
+    }
+}
+.our-story-block{
+    height: auto;
+    width: 92%;
+    margin-left: 12px;
+    .story-header{
+        margin-top: 80px;
+        h3{
+            font-size: 34px;
+            font-weight: 300;
+            color: #000;
+            text-transform: capitalize;
+        }
+        .underline{
+            height: 2px;
+            width: 66px; 
+            background-color: red;
+            margin-top: -20px;
+            margin-bottom: 40px;
+        }
+    }
+    .our-story{
+        p{
+            font-size: 20px;
+            font-weight: lighter;
+            line-height: 28px;
+        }
+    }
+}

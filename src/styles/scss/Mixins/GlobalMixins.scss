@@ -1,0 +1,65 @@
+//Showcase Images
+@mixin Background($background-Phto) {
+  background: linear-gradient(to right, #0e0e0e48, #3e3e3e48), $background-Phto;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
+//Flex Properties
+@mixin Display($direction, $justCon, $itemAlign) {
+  display: flex;
+  flex-direction: $direction;
+  justify-content: $justCon;
+  align-items: $itemAlign;
+}
+//Button Hover effect
+@mixin btnEffect() {
+  box-shadow: 5px 5px 10px black;
+  background-color: $primary-blue;
+}
+//Responsive Mixin
+@mixin lgDesktop {
+  @media only screen and (min-width: 2560px) and (max-width: 2560px) {
+    @content;
+  }
+}
+@mixin Desktop {
+  @media only screen and (min-width: 1920px) and (max-width: 1920px) {
+    @content;
+  }
+}
+
+@mixin lgLaptop {
+  @media only screen and(max-width: 1200px) {
+    @content;
+  }
+}
+@mixin Laptop {
+  @media only screen and(max-width: 1020px) {
+    @content;
+  }
+}
+//Tablet
+@mixin Tablet {
+  @media only screen and(max-width: 769px) {
+    @content;
+  }
+}
+//600
+@mixin lgMobile {
+  @media only screen and(max-width: 600px) {
+    @content;
+  }
+}
+//Mobile
+@mixin Mobile {
+  @media only screen and(max-width: 425px) {
+    @content;
+  }
+}
+//Medium Mobile
+@mixin medMobile {
+  @media only screen and(max-width: 385px) {
+    @content;
+  }
+}
