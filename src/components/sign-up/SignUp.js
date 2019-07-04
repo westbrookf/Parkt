@@ -58,7 +58,7 @@ class SignUp extends Component {
                         </div>
                         <div className="form-row">
                             <div className="col">
-                                <input onChange={this.signUpChangeHandler} value={this.state.user.telephone} name="telephone" type="text" className="form-control signup-input" placeholder="Telephone" required/>
+                                {/* <input onChange={this.signUpChangeHandler} value={this.state.user.telephone} name="telephone" type="text" className="form-control signup-input" placeholder="Telephone"/> */}
                             </div>
                             <div className="col">
                                 <input onChange={this.signUpChangeHandler} value={this.state.user.age} name="age" type="text" className="form-control signup-input" placeholder="Age" required/>

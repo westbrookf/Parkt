@@ -44,6 +44,9 @@
                 text-align: center;
                 width: 100%;
             }
+            .widget-container{
+                @include Display(row,unset,unset);
+            }
             .floor-level-input{
                 display: block;
                 height: 50px;

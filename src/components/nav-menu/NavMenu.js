@@ -14,7 +14,7 @@ class NavMenu extends Component {
                 <IconButton id="opn-nav-btn" name="more_vert" id="demo-menu-lower-right" />
             </div>
             <Menu target="demo-menu-lower-right" align="right">
-                <MenuItem className="nav-link-item vehicle-dets-link"><Link to="">vehicle details</Link></MenuItem>
+                <MenuItem className="nav-link-item vehicle-dets-link"><Link to="/VehicleDetails">vehicle details</Link></MenuItem>
                 <MenuItem className="nav-link-item park-his-link"><Link to="">parking history</Link></MenuItem>
                 <MenuItem className="nav-link-item about-us-link"><Link to="/about-us">about us</Link></MenuItem>
                 <MenuItem>< SignOut {...this.props}  /></MenuItem>

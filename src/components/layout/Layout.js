@@ -6,6 +6,7 @@ import { Route, withRouter } from 'react-router-dom';
 import ThankYou from '../thank-you-page/ThankYou';
 import AboutUs from '../about-us/AboutUs';
 import Home from '../home/Home';
+import VehicleDetails from '../vehicle-details/VehicleDetails';
 
 class Layout extends Component {
     render() {
@@ -31,7 +32,7 @@ class Layout extends Component {
 
                 {routes}
                 <Route exact path='/about-us' component={AboutUs} />
-                
+                <Route exact path='/VehicleDetails' component={VehicleDetails} />
             </div>
         );
     }

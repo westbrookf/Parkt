@@ -1,0 +1,19 @@
+@import '../../styles/scss/Mixins/GlobalMixins.scss';
+
+.btn-options-container{
+    @include Display(row, unset, unset);
+    .table-btn{
+        background-color: transparent !important;
+        background-size: cover;
+        background-position: center;
+        height: 20px;
+        width: 20px;
+    }
+    .edit-vehic-details{
+        background-image: url(../../images/edit.png);
+    }
+    .delete-vehic-details{
+        background-image: url(../../images/trash.png);
+
+    }
+}

@@ -12,6 +12,7 @@
     "react-mdl": "^1.11.0",
     "react-router-dom": "^5.0.0",
     "react-scripts": "3.0.1",
+    "reactstrap": "^8.0.0",
     "redux": "^4.0.1",
     "video-react": "^0.13.7"
   },

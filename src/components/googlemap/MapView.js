@@ -1,6 +1,6 @@
 import React, { Compontent } from 'react'
 import {compose, withProps } from 'recompose'
-import { withScriptjs, withGoogleMap, GoogleMap, Marker } from 'react-google-maps'
+import { withScriptjs, withGoogleMap, GoogleMap, Marker, google, MapDirectionsRenderer} from 'react-google-maps'
 import MapStyles from '../map-styles/MapStyles';
 
 import '../googlemap/MapStyles.scss';
@@ -33,6 +33,10 @@ const MapWrapper = compose(
         icon="https://www.robotwoods.com/dev/misc/bluecircle.png"
         scaledSize={new window.google.maps.Size(45,45)}
         />}
+        <MapDirectionsRenderer
+        places={{lat: props.currentLocation.lat, lng: props.currentLocation.lng}} 
+        travelMode={google.maps.TravelMode.WALKING}
+      />
     </GoogleMap>
 )
 export default MapWrapper

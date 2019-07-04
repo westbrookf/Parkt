@@ -36,14 +36,18 @@ class MainMap extends Component {
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(
                 position => {
-                    console.log(position.coords);
-                    this.setState(prevState => ({
-                        currentLatLng: {
-                            ...prevState.currentLatLng,
-                            lat: position.coords.latitude,
-                            lng: position.coords.longitude
-                        }
-                    }))
+                    console.log("Get GeoLocation",position.coords);
+                    let currentLatLng= {
+                        lat: position.coords.latitude,
+                        lng: position.coords.longitude
+                    }
+
+                    this.setState(
+                    {
+                        currentLatLng:currentLatLng
+                    }
+                    )
+
                 }
             )
         } else {
