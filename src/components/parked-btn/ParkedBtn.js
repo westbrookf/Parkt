@@ -1,5 +1,7 @@
 import  React, { Component } from 'react';
 
+import { props } from 'recompose';
+
 //TOOLS
 import  { Button, Dialog, DialogTitle, DialogContent, DialogActions}  from 'react-mdl';
 import axios from 'axios';
@@ -28,7 +30,7 @@ class ParkedBtn extends Component {
   }
   componentWillUpdate(){
     this.getGeoLocation();
-}
+  }
   componentDidMount(){
     // this.getGeoLocation();
     const loggedInUser = 
@@ -39,8 +41,8 @@ class ParkedBtn extends Component {
             user:loggedInUser
         }
     )
-}
-getGeoLocation = () => {
+  }
+  getGeoLocation = () => {
   if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
           position => {
@@ -64,7 +66,7 @@ getGeoLocation = () => {
       console.log('error loading maps')
   }
   
-}
+  }
 
   floorChangeHandler = (event) => {
     const key = event.target.name;
@@ -115,36 +117,36 @@ getGeoLocation = () => {
     });
 
   }
-  //DIRECTIONS RENDER
-  handleShowDirections = () =>{
-    this.setState({
-      directions: null,
-      error: null
-    });
-    this.componentDidMount ();
-  }
-    componentDidMount() {
-      const { places, travelMode } = this.props;
-      
-      const waypoints = places.map(p =>({
-          location: {lat: p.latitude, lng:p.longitude},
-          stopover: true
-      }))
-      const origin = waypoints.shift().location;
-      const destination = waypoints.pop().location;
-      
-      
-  
-      const directionsService = new google.maps.DirectionsService();
-      directionsService.route(
-        {
-          origin: origin,
-          destination: destination,
-          travelMode: travelMode,
-          waypoints: waypoints
+  //GET DIRECTIONS TO VEHICLE
+  state = {
+    directions: null,
+    originLat: position.coords.latitude,
+    originLng: position.coords.longitude
+  };
+
+  componentDidMount() {
+    const directionsService = new google.maps.DirectionsService();
+
+    const origin = { lat:currentLatLng.lat, lng:currentLatLng.lng };
+    const destination = { lat:this.state.savedLocation.lat, lng: this.state.savedLocation.lng };
+
+    directionsService.route(
+      {
+        origin: origin,
+        destination: destination,
+        travelMode: google.maps.TravelMode.DRIVING
+      },
+      (result, status) => {
+        if (status === google.maps.DirectionsStatus.OK) {
+          this.setState({
+            directions: result
+          });
+        } else {
+          console.error(`error fetching directions ${result}`);
         }
-      );
-    }
+      }
+    );
+  }
 
   render() {
     const parkedUser = localStorage.getItem("parkedUser");
@@ -155,7 +157,7 @@ getGeoLocation = () => {
       if (parkedUser){
         parkButton = null;
         locateButton = (
-          <Button className="global-btn-style" accent ripple colored raised ripple onClick={this.handleShowDirections}>locate</Button>
+          <Button className="global-btn-style" accent ripple colored raised ripple onClick={this.showDirections}>locate</Button>
         )
       }
     return ( 
