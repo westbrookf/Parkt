@@ -165,7 +165,7 @@ getGeoLocation = () => {
           {/* <Button className="global-btn-style" accent ripple colored raised ripple className="opn-modal-btn global-btn-style" onClick={this.handleOpenDialog}>Park</Button> */}
           <Dialog className="floor-modal-container" open={this.state.openDialog}>
             <DialogTitle className="floor-modal-title">
-              <span className="d-title">is this a parking garage?</span>
+              <span className="d-title">is is a parking garage?</span>
             </DialogTitle>
             <DialogContent className="floor-modal-form-container">
                 <form  className="floor-form" onSubmit={this.parkedCarSubmitHandler}>
