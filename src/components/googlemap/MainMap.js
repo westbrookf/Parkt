@@ -1,18 +1,16 @@
 import React, { Component }from 'react';
-import { withScriptjs, withGoogleMap, GoogleMap, PermissionRequest, Permissions } from 'react-google-maps';
 import MapView from './MapView';
-import MapStyles from '../map-styles/MapStyles';
-import axios from 'axios';
 import ParkedBtn from '../parked-btn/ParkedBtn';
+import MarkerSvg from './MarkerSvg';
 
 class MainMap extends Component {
 
-    async componentDidMount() {
-        const { status } = await Permissions.getAsync(Permissions.LOCATION)
-        if(status != 'granted') {
-            const response = await PermissionRequest.askAsync(Permissions.LOCATION)
-        }
-    }
+    // async componentDidMount() {
+    //     const { status } = await Permissions.getAsync(Permissions.LOCATION)
+    //     if(status != 'granted') {
+    //         const response = await PermissionRequest.askAsync(Permissions.LOCATION)
+    //     }
+    // }
 
     constructor(props){
         super(props)
@@ -40,6 +38,7 @@ class MainMap extends Component {
         this.setState({ isMarkerShown: false })
         this.delayedShowMarker()
     }
+
     getGeoLocation = () => {
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(
@@ -68,7 +67,7 @@ class MainMap extends Component {
             <React.Fragment>
                 <MapView 
                     isMarkerShown={this.state.isMarkerShown}
-                    onMarkerClick={this.handleMarkerClick}
+                    // onMarkerClick={this.handleMarkerClick}
                     currentLocation={this.state.currentLatLng}
                  />
                 <ParkedBtn currentLocation={this.state.currentLatLng} />

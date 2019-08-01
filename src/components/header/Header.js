@@ -9,7 +9,7 @@ import '../header/HeaderStyle.scss';
     return ( 
         <div className="header-container">
             <header className="main-header">
-              < WelcomeUserT />
+              {/* < WelcomeUserT /> */}
               <Link className="header-logo" to="/home" />
               < NavMenu {...this.props} />
             </header>

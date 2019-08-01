@@ -1,12 +1,15 @@
 import React, { Component } from 'react';
-import Login from '../login/Login';
-import SignUp from '../sign-up/SignUp';
-import LandingWelcome from '../../components/typography/LandingWelcome';
+
+//TOOLS IMPORT 
 import { Route, withRouter } from 'react-router-dom';
+
+//COMPONENTS IMPORTS 
+import LandingWelcome from '../../components/typography/LandingWelcome';
 import ThankYou from '../thank-you-page/ThankYou';
 import AboutUs from '../about-us/AboutUs';
 import Home from '../home/Home';
 import VehicleDetails from '../vehicle-details/VehicleDetails';
+// import Locate from '../locate/Locate';
 
 class Layout extends Component {
     render() {
@@ -16,7 +19,7 @@ class Layout extends Component {
             <React.Fragment>
                 <Route exact path='/' render={(props) => <LandingWelcome {...props} />}/>
                 <Route exact path='/landing-welcome' render={(props) => <LandingWelcome {...props} />} />
-                <Route exact path='/thank-you' component= {ThankYou} />
+                <Route exact path='/thank-you' component= {ThankYou} />                
             </React.Fragment>
         )
         if(loggedInUser) {
@@ -33,6 +36,7 @@ class Layout extends Component {
                 {routes}
                 <Route exact path='/about-us' component={AboutUs} />
                 <Route exact path='/VehicleDetails' component={VehicleDetails} />
+                {/* <Route eaxct path ='/Locate' component={Locate} /> */}
             </div>
         );
     }

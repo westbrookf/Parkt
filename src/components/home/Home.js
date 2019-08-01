@@ -1,9 +1,6 @@
 import React from 'react';
-import {Link} from 'react-router-dom';
-// import { ReactFragment } from 'react';
 import MainMap from '../googlemap/MainMap';
 import Header from '../header/Header';
-import ParkedBtn from '../parked-btn/ParkedBtn';
 
 import '../home/HomeStyles.scss';
 

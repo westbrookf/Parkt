@@ -65,3 +65,25 @@
         }
     }
 }
+.locate-pg-btn-container{
+    background-color: #007bff !important;
+    height: 40px;
+    width: 200px;
+    position: absolute;
+    top: 40%;
+}
+.locate-pg-btn{
+    color: #f7f7f7;
+    height: 40px;
+    width: 200px;
+    text-align: center;
+    position: absolute;
+    font-size: 18px;
+    top: 0;
+    left: 0;
+    z-index: 99;
+}
+.locate-pg-btn:hover{
+    text-decoration: none;
+    color: #f7f7f7;
+}

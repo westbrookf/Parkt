@@ -1,7 +1,32 @@
 @import '../../styles/scss/Mixins/GlobalMixins.scss';
-.signup-container{
-    height: 98vh;
-    width: 100vw;
+
+.signup-btn{
+  font-size: 22px !important;
+  font-weight: 400 !important;
+  color: #f1f1f1 !important;
+  border: none !important;
+}
+.signup-btn:hover{
+  background-color: transparent !important;
+}
+.signup-modal{
+  margin-left: 8%;
+  background:linear-gradient(to bottom,#f8f8f8, #e7e7e7);
+}
+.signup-title{
+  color: #0583F2;
+  font-weight: 400;
+}
+.sign-up-underline{
+  height: 2px;
+  width: 60px;
+  background-color: #F25252;
+  margin-left: 110px;
+  margin-top: 14px;
+}
+.signup-content{
+  width: 300px;
+  padding-left: 0px !important;
 }
 .sign-up-form-style{
   height: 98vh;
@@ -13,16 +38,16 @@
     display: block;
   }
   .signup-input{
-    width: 99%;
+    width: 100%;
     margin-top: 18px;
     background-color: transparent;
-    border: none;
-    border-bottom: 2px solid #86868683;
-    color: #fff;
+    border: 2px solid #d8d8d89f;
+    color: #0D0D0D9a;
+    padding: 6px;
   }
   .signup-input::placeholder{
     font-size: 18px;
-    color: #dadada;
+    color: #0D0D0D9a;
   }
   // .form-control:hover{
   //   /* box-shadow: 0 0 0 1px rgba(0,0,0,0.15), 0 6px 8px rgba(0,0,0,0.2); */

@@ -1,7 +1,4 @@
 import React, { Component } from 'react';
-import NavMenu from '../nav-menu/NavMenu';
-import Header from '../header/Header';
-import WelcomeUserT from '../welcomeUserTitle/WelcomeUserT';
 import ToTop from '../totopbtn/ToTop';
 import '../about-us/AboutUsStyles.scss';
 

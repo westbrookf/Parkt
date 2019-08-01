@@ -1,25 +1,26 @@
 @import '../../styles/scss/Mixins/GlobalMixins.scss';
 
 .header-container{
-    height: 12vh;
+    height: 10vh;
     width: 100vw;
     position: absolute;
     z-index:99;
+    background-color: #f0efef;
 }
 .main-header{
     height: 100%;
     width: 100vw;
     background-color: transparent;
-    @include Display(row, unset, center);
+    @include Display(row, space-between, center);
 }
 .header-logo{
     background-image: url(../../images/LogoTwo.png);
     background-size: cover;
     background-position: center;
-    height: 50px;
-    width: 20%;
+    height: 60px;
+    width: 100px;
     // z-index: 99;
     margin-left: 13px;
-    // margin-top: 20px;
+    margin-top: 6px;
     cursor: pointer;
 }

@@ -1,12 +1,12 @@
 import React, { Component } from 'react';
-import axios from 'axios';
-import { Button } from 'react-mdl';
+import {  Button, Dialog, DialogTitle, DialogContent } from 'react-mdl';
 
 // Component CSS
 import '../sign-up/SignUpStyles.scss';
 
 //Global CSS
 import '../../styles/scss/globalStyles/GlobalStyles.scss';
+
 
 class SignUp extends Component {
     
@@ -20,7 +20,26 @@ class SignUp extends Component {
             password: ''
         }
     }
-
+    //Handle Sign Up Modal
+    constructor(props) {
+        super(props);
+        // this.state = {};
+        this.handleOpenDialog = this.handleOpenDialog.bind(this);
+        this.handleCloseDialog = this.handleCloseDialog.bind(this);
+      }
+    
+      handleOpenDialog() {
+        this.setState({
+          openDialog: true
+        });
+      }
+    
+      handleCloseDialog() {
+        this.setState({
+          openDialog: false
+        });
+      }
+    //
     signUpChangeHandler = (event) => {
         const key = event.target.name;
         const value = event.target.value;
@@ -32,52 +51,51 @@ class SignUp extends Component {
             user:tempUser
         })
     }
-    signUpSubmitHandler = (event) => {
-        event.preventDefault();
-        axios.post('http://localhost:8080/submitUserDetails', this.state.user)
-        .then((response) => {
-            this.props.history.push('thank-you');
-        }).catch((error) => {
-            //Handle error here
-        })
-    }
 
     render() {
         return (
-            <div className="signup-container">
-                <div className="sign-up-form-style">
-                    <h3 className="sign-up-title">Sign Up!</h3>
-                    <form className="container" onSubmit={this.signUpSubmitHandler}>
-                        <div className="form-row">
-                            <div className="col">
-                                <input onChange={this.signUpChangeHandler} value={this.state.user.firstName} name="firstName" type="text" className="form-control signup-input" placeholder="First Name" required/>
+            <div className="signup-modal-container">
+                <Button ripple className="signup-btn" onClick={this.handleOpenDialog}>Sign Up</Button>
+                <Dialog open={this.state.openDialog} className="signup-modal">
+                    <DialogTitle className="signup-title">Sign Up!</DialogTitle>
+                    <div className="sign-up-underline"></div>
+                    <DialogContent className="signup-content" >
+                        <form className="container" onSubmit={this.signUpSubmitHandler}>
+                            <div className="form-row">
+                                <div className="col">
+                                    <input onChange={this.signUpChangeHandler} value={this.state.user.firstName} name="firstName" type="text" className="signup-input" placeholder="First Name" required/>
+                                </div>
+                                <div className="col">
+                                    <input onChange={this.signUpChangeHandler} value={this.state.user.lastName} name="lastName" type="text" className="signup-input" placeholder="Last Name" required/>
+                                </div>
                             </div>
-                            <div className="col">
-                                <input onChange={this.signUpChangeHandler} value={this.state.user.lastName} name="lastName" type="text" className="form-control signup-input" placeholder="Last Name" required/>
+                            <div className="form-row">
+                                <div className="col">
+                                    {/* <input onChange={this.signUpChangeHandler} value={this.state.user.telephone} name="telephone" type="text" className=" signup-input" placeholder="Telephone"/> */}
+                                </div>
+                                <div className="col">
+                                    <input onChange={this.signUpChangeHandler} value={this.state.user.age} name="age" type="text" className="signup-input" placeholder="Age" required/>
+                                </div>
                             </div>
-                        </div>
-                        <div className="form-row">
-                            <div className="col">
-                                {/* <input onChange={this.signUpChangeHandler} value={this.state.user.telephone} name="telephone" type="text" className="form-control signup-input" placeholder="Telephone"/> */}
+                            <div className="form-row">
+                                <div className="col">
+                                    <input onChange={this.signUpChangeHandler} value={this.state.user.email} name="email" type="text" className="signup-input" placeholder="Email" required/>
+                                </div>
+                                <div className="col">
+                                    <input onChange={this.signUpChangeHandler} value={this.state.user.password} name="password" type="text" className="signup-input" placeholder="Password" required />
+                                </div>
                             </div>
-                            <div className="col">
-                                <input onChange={this.signUpChangeHandler} value={this.state.user.age} name="age" type="text" className="form-control signup-input" placeholder="Age" required/>
+                            <div className="signup-submit-btn">
+                                <Button raised accent ripple onClick = {this.handleCloseDialog} className="global-btn-style"  type="submit">sign up</Button>
                             </div>
-                        </div>
-                        <div className="form-row">
-                            <div className="col">
-                                <input onChange={this.signUpChangeHandler} value={this.state.user.email} name="email" type="text" className="form-control signup-input" placeholder="Email" required/>
-                            </div>
-                            <div className="col">
-                                <input onChange={this.signUpChangeHandler} value={this.state.user.password} name="password" type="text" className="form-control signup-input" placeholder="Password" required />
-                            </div>
-                        </div>
-                        <div className="signup-submit-btn">
-                        <Button className="global-btn-style" raised accent ripple type="submit">sign up</Button>
-                        </div>
-                    </form>
-                </div>
+                        </form>                    
+                    </DialogContent>
+                </Dialog>
             </div>
+            // <div className="signup-container">
+            //     <div className="sign-up-form-style">
+            //     </div>
+            // </div>
         );
     }
 }

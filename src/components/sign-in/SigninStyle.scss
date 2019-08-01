@@ -1,0 +1,55 @@
+@import '../../styles/scss/Mixins/GlobalMixins.scss';
+
+.signin-btn{
+  font-size: 22px !important;
+  font-weight: 400 !important;
+  color: #f1f1f1 !important;
+  border: none !important;
+}
+.signin-btn:hover{
+  background-color: transparent !important;
+}
+  .landing-login{
+    background:linear-gradient(to bottom,#f8f8f8, #d4d4d4);
+    left: 8%;
+  }
+  .login-header{
+    font-size: 40px;
+    color: #0583F2;
+    height: auto;
+    width: 100%;
+    text-align: center;
+  }
+  .sign-in-underline{
+    height: 2px;
+    width: 60px;
+    background-color: #F25252;
+    margin-left: 110px;
+    margin-top: -14px;
+    margin-bottom: 20px;
+  }
+  .landing-login-form{
+    margin-top: -36px;
+    width: 100%;
+    height: auto;
+    // @include Display(column, space-between, unset);
+    .log-in-input{
+      width: 90%;
+      // margin-left: 20px;
+      margin-top: 22px;
+      background-color: transparent;
+      // border: none;
+      border: 2px solid #d8d8d89f;
+      padding: 8px;
+      color: #303030;
+      font-size: 18px;
+    }
+    .log-in-input::placeholder{
+      color: #0D0D0D9a;
+    }
+  }
+  .login-submit-btn{
+    width: 90%;
+    margin-top: 20px;
+    margin-left: 11px;
+  }

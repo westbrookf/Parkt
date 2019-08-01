@@ -1,18 +1,10 @@
 import  React, { Component } from 'react';
 
-import { props } from 'recompose';
-
 //TOOLS
-import  { Button, Dialog, DialogTitle, DialogContent, DialogActions}  from 'react-mdl';
+import  { Button, Dialog, DialogTitle, DialogContent}  from 'react-mdl';
 import axios from 'axios';
-import { compose, withProps, lifecycle } from 'recompose';
-import { google, withScriptjs, withGoogleMap, GoogleMap, DirectionsRenderer, Marker
-} from 'react-google-maps';
+import { Link } from 'react-router-dom';
 
-//Component Imports
-import MainMap from '../googlemap/MainMap';
-import HelpWidget from '../helpwidget/HelpWidget';
-import LocateBtn from '../locateBtn/LocateBtn';
 
 //Component SCSS
 import '../parked-btn/ParkedStyles.scss';
@@ -117,24 +109,20 @@ class ParkedBtn extends Component {
     });
 
   }
-  calculatRoute(){
-  }
-  //GET DIRECTIONS TO VEHICLE
-          showDirections = () =>{
-            console.log("directions", this.calculatRoute())
-            this.calculatRoute();
-          }
+
 
   render() {
-    const parkedUser = localStorage.getItem("parkedUser");
+    let parkedUser = null;
       let locateButton = null;
       let parkButton=(
         <Button className="global-btn-style" accent ripple colored raised ripple className="opn-modal-btn global-btn-style" onClick={this.handleOpenDialog}>Park</Button>
       )
-      if (parkedUser){
+      if (parkedUser != null){
         parkButton = null;
         locateButton = (
-          <Button className="global-btn-style" accent ripple colored raised ripple onClick={this.showDirections}>locate</Button>
+          <Button className=" locate-pg-btn-container" accent ripple colored raised ripple>
+            <Link  className="locate-pg-btn" to="/Locate">Locate</Link>
+          </Button>
         )
       }
     return ( 
@@ -142,7 +130,7 @@ class ParkedBtn extends Component {
         {parkButton}
         {locateButton}
           {/* <Button className="global-btn-style" accent ripple colored raised ripple className="opn-modal-btn global-btn-style" onClick={this.handleOpenDialog}>Park</Button> */}
-          <Dialog className="floor-modal-container" open={this.state.openDialog}>
+          <Dialog className="floor-modal-container" open={this.state.openDialog} onClick={this.handleWindowClose}>
             <DialogTitle className="floor-modal-title">
               <span className="d-title">is this a parking garage?</span>
             </DialogTitle>
@@ -151,8 +139,8 @@ class ParkedBtn extends Component {
                   <div className="floor-level-input-container">
                     <label htmlFor="floor" className="floor-level-label"><strong>floor #</strong></label>
                     <div className="widget-container">
-                      <input className="floor-level-input" value={this.state.savedLocation.floor} name="floor" onChange={this.floorChangeHandler} type="text"/>
-                      <HelpWidget />
+                      <input className="floor-level-input" value={this.state.savedLocation.floor} name="floor" onChange={this.floorChangeHandler} type="text" required />
+                      {/* <HelpWidget /> */}
                     </div>
                   </div>
                   <div className="floor-submit-btn-container">

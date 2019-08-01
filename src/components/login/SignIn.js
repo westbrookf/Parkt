@@ -5,7 +5,7 @@ import { Button } from 'react-mdl';
 import Home from '../home/Home';
 
 
-import '../login/LoginStyle.scss';
+import './LoginStyle.scss';
  class Login extends Component {
 
     state ={

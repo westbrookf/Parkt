@@ -12,3 +12,17 @@
     display:none;
 }
 
+//Map Marker SVG
+.front {
+    fill: #0033ff;
+    opacity: 0.9;
+  }
+  .middle {
+    fill: white;
+    opacity: 1;
+  }
+  #back {
+    fill: #0033ff;
+    stroke: #0033ff;
+    opacity: 0;
+  }

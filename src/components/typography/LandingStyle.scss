@@ -4,9 +4,11 @@
     height: 100vh;
     // margin-top: 10px;
     overflow: hidden;
-    background: linear-gradient(to right, #2421217a, #2421217a),url(../../images//landingBg.jpg);    
-    background-size:cover;
-    background-position: center;
+    // background: linear-gradient(to right, #2421217a, #2421217a),url(../../images//landingBg.jpg);    
+    // background-size:cover;
+    // background-position: center;
+    // background-color: #7cdbds;
+    background: linear-gradient(to bottom, #e2e2e254, #064b88);
 }
 .text-container{
     z-index: 99;
@@ -21,16 +23,11 @@
     background-position: center;
     height: 200px;
     width: 250px;
-    margin-left: 40px;
+    margin-left: 52px;
     z-index: 1000;
 }
 .landing-btn-container{
     height: auto;
-    width: 90%;
-    @include Display(column, unset, unset);
-    margin-left: 15px;
-    Button{
-        margin-top: 16px;
-        background-color: #007bff !important;
-    }
+    width: 100%;
+    @include Display(row, center, center);
 }

@@ -1,9 +1,9 @@
-import React, { Component } from 'react'
+import React from 'react'
 import {compose, withProps } from 'recompose'
-import { withScriptjs, withGoogleMap, GoogleMap, Marker, google, lifecycle, DirectionsRenderer, Polyline} from 'react-google-maps'
-import MapStyles from '../map-styles/MapStyles';
-
+import { withScriptjs, withGoogleMap, GoogleMap, Marker, DirectionsRenderer} from 'react-google-maps'
+import MarkerSvg from './MarkerSvg';
 import '../googlemap/MapStyles.scss';
+
 
 const MapView = compose(
         withProps({
@@ -11,10 +11,10 @@ const MapView = compose(
         loadingElement: <div style={{ height: `100%`}} />,
         containerElement: <div style={{ height: `100vh`}} />,
         mapElement: <div style={{ height: `100%`}} />,
-    }),
+        }),
     withScriptjs,withGoogleMap, )((props) =>
     <GoogleMap 
-        defaultZoom={18}
+        defaultZoom={16}
         defaultCenter={{ lat: props.currentLocation.lat,lng: props.currentLocation.lng }}
         defaultOptions={{
             // styles: MapStyles,
@@ -22,7 +22,7 @@ const MapView = compose(
             scaleControl: true,
             mapTypeControl: false,
             panControl: true,
-            zoomControl: true,
+            zoomControl: false,
             // rotateControl: false,
             fullscreenControl: false
         }}
@@ -30,21 +30,9 @@ const MapView = compose(
         {props.isMarkerShown && <Marker 
         position={{lat: props.currentLocation.lat, lng: props.currentLocation.lng}} 
         onClick={props.onMarkerClick} 
-        icon="https://www.robotwoods.com/dev/misc/bluecircle.png"
-        scaledSize={new window.google.maps.Size(45,45)}
-        // animation={window.google.maps.Animation.BOUNCE}
-        />}
-
-        <Polyline
-                path={[{ lat: -34.397, lng: 150.644 }, { lat: -35.397, lng: 151.644 }]}
-                geodesic={true}
-                options={{
-                    strokeColor: "#ff2527",
-                    strokeOpacity: 0.75,
-                    strokeWeight: 2
-                }}
-        />
+        // icon= 
+         />}
     </GoogleMap>
+    
 )
-{/* <MapView /> */}
 export default MapView
