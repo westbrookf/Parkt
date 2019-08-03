@@ -112,12 +112,25 @@ class ParkedBtn extends Component {
 
 
   render() {
-    let parkedUser = null;
+      let parkedUser = (
+        <form  className="floor-form" onSubmit={this.parkedCarSubmitHandler}>
+          <div className="floor-level-input-container">
+            <label htmlFor="floor" className="floor-level-label"><strong>floor #</strong></label>
+            <div className="widget-container">
+              <input className="floor-level-input" value={this.state.savedLocation.floor} name="floor" onChange={this.floorChangeHandler} type="text" required />
+                {/* <HelpWidget /> */}
+            </div>
+          </div>
+          <div className="floor-submit-btn-container">
+            <Button accent ripple colored raised ripple type="submit" className="floor-submit-btn global-btn-style" onClick={this.toggleLocate}>done</Button>
+          </div>
+        </form>
+      )
       let locateButton = null;
       let parkButton=(
         <Button className="global-btn-style" accent ripple colored raised ripple className="opn-modal-btn global-btn-style" onClick={this.handleOpenDialog}>Park</Button>
       )
-      if (parkedUser != null){
+      if (parkedUser){
         parkButton = null;
         locateButton = (
           <Button className=" locate-pg-btn-container" accent ripple colored raised ripple>
@@ -135,18 +148,7 @@ class ParkedBtn extends Component {
               <span className="d-title">is this a parking garage?</span>
             </DialogTitle>
             <DialogContent className="floor-modal-form-container">
-                <form  className="floor-form" onSubmit={this.parkedCarSubmitHandler}>
-                  <div className="floor-level-input-container">
-                    <label htmlFor="floor" className="floor-level-label"><strong>floor #</strong></label>
-                    <div className="widget-container">
-                      <input className="floor-level-input" value={this.state.savedLocation.floor} name="floor" onChange={this.floorChangeHandler} type="text" required />
-                      {/* <HelpWidget /> */}
-                    </div>
-                  </div>
-                  <div className="floor-submit-btn-container">
-                    <Button accent ripple colored raised ripple type="submit" className="floor-submit-btn global-btn-style" onClick={this.toggleLocate}>done</Button>
-                  </div>
-                </form>
+                {parkedUser}
             </DialogContent>
           </Dialog>
         </div>
