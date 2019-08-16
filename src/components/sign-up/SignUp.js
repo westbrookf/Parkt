@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import {  Button, Dialog, DialogTitle, DialogContent } from 'react-mdl';
-
+import axios from 'axios';
 // Component CSS
 import '../sign-up/SignUpStyles.scss';
 
@@ -49,6 +49,15 @@ class SignUp extends Component {
 
         this.setState({
             user:tempUser
+        })
+    }
+    signUpSubmitHandler = (event) => {
+        event.preventDefault();
+        axios.post('http://localhost:8080/submitUserDetails', this.state.user)
+        .then((response) => {
+            this.props.history.push('thank-you');
+        }).catch((error) => {
+            //Handle error here
         })
     }
 

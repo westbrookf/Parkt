@@ -130,14 +130,14 @@ class ParkedBtn extends Component {
       let parkButton=(
         <Button className="global-btn-style" accent ripple colored raised ripple className="opn-modal-btn global-btn-style" onClick={this.handleOpenDialog}>Park</Button>
       )
-      if (parkedUser){
-        parkButton = null;
-        locateButton = (
-          <Button className=" locate-pg-btn-container" accent ripple colored raised ripple>
-            <Link  className="locate-pg-btn" to="/Locate">Locate</Link>
-          </Button>
-        )
-      }
+      // if (){
+      //   parkButton = null;
+      //   locateButton = (
+      //     <Button className=" locate-pg-btn-container" accent ripple colored raised ripple>
+      //       <Link  className="locate-pg-btn" to="/Locate">Locate</Link>
+      //     </Button>
+      //   )
+      // }
     return ( 
         <div className="btn-container">
         {parkButton}

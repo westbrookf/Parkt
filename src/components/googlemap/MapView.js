@@ -1,9 +1,8 @@
 import React from 'react'
 import {compose, withProps } from 'recompose'
-import { withScriptjs, withGoogleMap, GoogleMap, Marker, DirectionsRenderer} from 'react-google-maps'
-import MarkerSvg from './MarkerSvg';
+import { withScriptjs, withGoogleMap, GoogleMap, Marker} from 'react-google-maps'
+import mapMarker from '../../icons/mainMarker.svg';
 import '../googlemap/MapStyles.scss';
-
 
 const MapView = compose(
         withProps({
@@ -30,7 +29,7 @@ const MapView = compose(
         {props.isMarkerShown && <Marker 
         position={{lat: props.currentLocation.lat, lng: props.currentLocation.lng}} 
         onClick={props.onMarkerClick} 
-        // icon= 
+        icon= {mapMarker}
          />}
     </GoogleMap>
     

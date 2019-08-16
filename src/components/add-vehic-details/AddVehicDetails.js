@@ -4,22 +4,10 @@ import axios from 'axios';
 import  { Button, Dialog, DialogTitle, DialogContent, DialogActions}  from 'react-mdl';
 
 class AddVehicDetails extends Component {
-    // constructor(props) {
-    //     super(props);
-    //     this.state = {
-    //         vehicle: {
-    //             year: '',
-    //             make: '',
-    //             model: '',
-    //             color: ''
-    //         }
-    //     }
-    // }
-    
-        // vehicles:[], 
     state={
         user:{},
         vehicle:{
+            email: '',
             year: '',
             make: '',
             model: '',
@@ -31,19 +19,30 @@ class AddVehicDetails extends Component {
         this.handleOpenDialog = this.handleOpenDialog.bind(this);
         this.handleCloseDialog = this.handleCloseDialog.bind(this);
     }
+    componentDidMount(){
+        // this.getGeoLocation();
+        const loggedInUser = 
+        JSON.parse(localStorage.getItem('loggedInUser'));
+      
+        this.setState(
+            {
+                user:loggedInUser
+            }
+        )
+      }
     //Open Modal Handler
-      handleOpenDialog() {
+    handleOpenDialog() {
         this.setState({
           openDialog: true
         });
-      }
+    }
     //Close Modal Handler
-      handleCloseDialog() {
+    handleCloseDialog() {
         this.setState({
           openDialog: false,
         
         });
-      }
+    }
     //   //Input onChange handler
     handleChange = (event) => {
         const key = event.target.name;
@@ -56,49 +55,63 @@ class AddVehicDetails extends Component {
             vehicle:tempVehic
         })
     }
-    parkedCarSubmitHandler = (event) => {
-        // event.preventDefault();
+    vehicleDetailSubmitHandler = (event) => {
+        event.preventDefault();
+        let vehicleDets = {...this.state.vehicle}
+        vehicleDets.user = this.state.user.email;
+        console.log("vehicle data", vehicleDets);
+
         axios.post('http://localhost:8080/submitNewVehicle', this.state.vehicle)
         .then((response) => {
-            this.props.history.push('thank-you');
+            const userVehicleInfo = response.data;
+            localStorage.setItem("vehicleInfo", JSON.stringify(userVehicleInfo));
         }).catch((error) => {
             //Handle error here
         })
+        this.handleCloseDialog();
     }
     
     render() {
+        const userVehicle = localStorage.getItem("vehicleInfo");
+        
+        let addBtn = (
+            <Button className="global-btn-style" accent ripple colored raised ripple className="opn-modal-btn global-btn-style" onClick={this.handleOpenDialog}>add</Button>
+        )
+        if(userVehicle){
+            addBtn = null;
+        }
         return (
             <div>
-                <VehicleItem vehicles={this.state.vehicles} delVehicle={this.delVehicle} />
-                <Button className="global-btn-style" accent ripple colored raised ripple className="opn-modal-btn global-btn-style" onClick={this.handleOpenDialog}>add</Button>
+                {/* <VehicleItem vehicles={this.state.vehicles} delVehicle={this.delVehicle} /> */}
+                {addBtn}
                 <Dialog className="vehicle-modal-container" open={this.state.openDialog}>
-                    <DialogTitle className="vehicle-modal-title">
-                        <h3 className="vehicle-title">add a new vehicle</h3>
-                    </DialogTitle>
-                    <DialogContent className="vehicle-modal-form-container">
-                        <form  className="vehicle-form" onSubmit={this.parkedCarSubmitHandler}>
-                            <div>
-                                <label for="year">year</label>
-                                <input name="year" type="text" value={this.state.vehicle.year} onChange={this.handleChange}/>
-                            </div>
-                            <div>
-                                <label for="make">make</label>
-                                <input name="make" type="text"  value={this.state.vehicle.make} onChange={this.handleChange}/>
-                            </div>
-                            <div>
-                                <label for="model">model</label>
-                                <input name="model" type="text"  value={this.state.vehicle.model} onChange={this.handleChange}/>
-                            </div>
-                            <div>
-                                <label for="color">color</label>
-                                <input name="color" type="text"  value={this.state.vehicle.color} onChange={this.handleChange}/>
-                            </div>
-                            <div className="floor-submit-btn-container">
-                                <Button accent ripple colored raised ripple className="floor-submit-btn global-btn-style" type="submit">done</Button>
-                            </div>
-                        </form>
-                    </DialogContent>
-                </Dialog>
+                <DialogTitle className="vehicle-modal-title">
+                    <h3 className="vehicle-title">add a new vehicle</h3>
+                </DialogTitle>
+                <DialogContent className="vehicle-modal-form-container">
+                    <form  className="vehicle-form" onSubmit={this.vehicleDetailSubmitHandler}>
+                        <div>
+                            <label for="year">year</label>
+                            <input name="year" type="text" value={this.state.vehicle.year} onChange={this.handleChange}/>
+                        </div>
+                        <div>
+                            <label for="make">make</label>
+                            <input name="make" type="text"  value={this.state.vehicle.make} onChange={this.handleChange}/>
+                        </div>
+                        <div>
+                            <label for="model">model</label>
+                            <input name="model" type="text"  value={this.state.vehicle.model} onChange={this.handleChange}/>
+                        </div>
+                        <div>
+                            <label for="color">color</label>
+                            <input name="color" type="text"  value={this.state.vehicle.color} onChange={this.handleChange}/>
+                        </div>
+                        <div className="floor-submit-btn-container">
+                            <Button accent ripple colored raised ripple className="floor-submit-btn global-btn-style" type="submit">done</Button>
+                        </div>
+                    </form>
+                </DialogContent>
+            </Dialog>
             </div>
         );
     }
