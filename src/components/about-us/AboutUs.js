@@ -9,7 +9,7 @@ class AboutUs extends Component {
             <div className="aboutus-comp-wrapper">
                 <div className="about-showcase">
                     <div className="close-aboutus-container">
-                        <h3> X </h3>
+                        <h3 className="close-about-us" onClick={this.closeAboutUs}> X </h3>
                     </div>
                 </div>
                 < ToTop />

@@ -18,11 +18,20 @@
         @include Background(url(../../images/garage-photo.jpg));
         height: 180px;
         width: 100%;
-        padding-top: 60px;
+        // padding-top: 60px;
         // border-bottom: 2px solid #007bff;
+        .close-floor-form{
+            font-size: 24px;
+            // font-weight: lighter;
+            color: white;
+            float: right;
+            // margin-top: -12px;
+            // margin-right: -10px;
+            margin: -22px, -10px, 0, 0;
+        }
         .d-title{
             font-size: 26px;
-            margin-top: 0;
+            padding-top: 30px;
             text-transform: capitalize;
             color: #f7f7f7;
         }

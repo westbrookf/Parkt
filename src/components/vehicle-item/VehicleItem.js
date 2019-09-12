@@ -1,39 +1,36 @@
 //VEHICLE LIST COMPONENT
 
-import React from 'react';
+import React, {Component}  from 'react';
 import propTypes from 'prop-types';
 
+class VehicleItem extends Component{
+    state={
+        user:{},
+        year: '',
+        make: '',
+        model: '',
+        color: ''
+    }
 
-const VehicleItem =(props) => {
-    // const {id, year,make,model,color} = this.state.vehicles;
-    return (
-        <div className="vehicle-component-container">
-            <div className="vehicle-item-container">
-                <div className="vehicle-color" ></div>
-                <div className="vehicle-details">
-                    {/* <li key={index}>
-                        {vehicle}
-                    </li> */}
-                </div>
-                {/* <button onClick={this.props.delTodo.bind(this, id)} >x</button> */}
+    componentDidMount(){
+        const loggedInUser = 
+        JSON.parse(localStorage.getItem('loggedInUser'));
+
+        this.setState(
+            {
+                user:loggedInUser
+            }
+        );
+    }
+
+    render() {
+        return(
+            <div className="userVehicleContainer">
+                <div className="vehicleColor">{ this.state.color }</div>
+                
             </div>
-        </div>
-    );
+        );
+    }
 }
 
-//PropTypes
-// VehicleItem.propTypes = {
-//     vehicles: propTypes.object.isRequired
-//   }
-// const btnStyle = {
-//     background: '#ff0000',
-//     color: '#fff',
-//     border: 'none',
-//     marginTop: '-5px',
-//     padding: '10px 12px',
-//     borderRadius: '50%',
-//     cursor: 'pointer',
-//     float: 'right',
-//     fontSize: '14px'
-// }
 export default VehicleItem;

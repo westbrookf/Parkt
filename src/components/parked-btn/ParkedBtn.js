@@ -38,7 +38,7 @@ class ParkedBtn extends Component {
   if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(
           position => {
-              console.log("Get GeoLocation",position.coords);
+              // console.log("Get GeoLocation",position.coords);
               let currentLatLng= {...this.state.savedLocation};
               
             
@@ -76,7 +76,7 @@ class ParkedBtn extends Component {
   parkedCarSubmitHandler = (event) =>{
      event.preventDefault();
      let location= {...this.state.savedLocation}
-    location.user = this.state.user.email;
+    let user = this.state.user.email;
      console.log("park submit with data: ", location);
 
     axios.post('http://localhost:8080/parkedCar',location)
@@ -109,6 +109,11 @@ class ParkedBtn extends Component {
     });
 
   }
+  closeFormX = (event) => {
+    this.setState({
+      openDialog: false
+    })
+  }
 
 
   render() {
@@ -140,12 +145,13 @@ class ParkedBtn extends Component {
       // }
     return ( 
         <div className="btn-container">
-        {parkButton}
-        {locateButton}
+          {parkButton}
+          {locateButton}
           {/* <Button className="global-btn-style" accent ripple colored raised ripple className="opn-modal-btn global-btn-style" onClick={this.handleOpenDialog}>Park</Button> */}
           <Dialog className="floor-modal-container" open={this.state.openDialog} onClick={this.handleWindowClose}>
             <DialogTitle className="floor-modal-title">
-              <span className="d-title">is this a parking garage?</span>
+              <p className="close-floor-form" onClick={this.closeFormX}>X</p>
+              <h3 className="d-title">is this a parking garage?</h3>
             </DialogTitle>
             <DialogContent className="floor-modal-form-container">
                 {parkedUser}

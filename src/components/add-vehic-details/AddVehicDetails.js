@@ -7,7 +7,6 @@ class AddVehicDetails extends Component {
     state={
         user:{},
         vehicle:{
-            email: '',
             year: '',
             make: '',
             model: '',
@@ -57,14 +56,13 @@ class AddVehicDetails extends Component {
     }
     vehicleDetailSubmitHandler = (event) => {
         event.preventDefault();
-        let vehicleDets = {...this.state.vehicle}
-        vehicleDets.user = this.state.user.email;
-        console.log("vehicle data", vehicleDets);
-
-        axios.post('http://localhost:8080/submitNewVehicle', this.state.vehicle)
+        let vehicle = {...this.state.vehicle};
+        vehicle.user = this.state.user.email;
+        console.log("submit vehicle details with data: ", vehicle);
+        axios.post('http://localhost:8080/submitNewVehicle', vehicle)
         .then((response) => {
-            const userVehicleInfo = response.data;
-            localStorage.setItem("vehicleInfo", JSON.stringify(userVehicleInfo));
+            const userVehicleDetails = response.data;
+            localStorage.setItem("vehicleDetails", JSON.stringify(userVehicleDetails));
         }).catch((error) => {
             //Handle error here
         })
@@ -77,33 +75,33 @@ class AddVehicDetails extends Component {
         let addBtn = (
             <Button className="global-btn-style" accent ripple colored raised ripple className="opn-modal-btn global-btn-style" onClick={this.handleOpenDialog}>add</Button>
         )
-        if(userVehicle){
-            addBtn = null;
-        }
+        // if(userVehicle != null){
+        //     addBtn = null;
+        // }
         return (
             <div>
-                {/* <VehicleItem vehicles={this.state.vehicles} delVehicle={this.delVehicle} /> */}
+                <VehicleItem />
                 {addBtn}
                 <Dialog className="vehicle-modal-container" open={this.state.openDialog}>
                 <DialogTitle className="vehicle-modal-title">
-                    <h3 className="vehicle-title">add a new vehicle</h3>
+                    <p className="vehicle-title">add a new vehicle</p>
                 </DialogTitle>
                 <DialogContent className="vehicle-modal-form-container">
                     <form  className="vehicle-form" onSubmit={this.vehicleDetailSubmitHandler}>
                         <div>
-                            <label for="year">year</label>
+                            <label htmlFor="year">year</label>
                             <input name="year" type="text" value={this.state.vehicle.year} onChange={this.handleChange}/>
                         </div>
                         <div>
-                            <label for="make">make</label>
+                            <label htmlFor="make">make</label>
                             <input name="make" type="text"  value={this.state.vehicle.make} onChange={this.handleChange}/>
                         </div>
                         <div>
-                            <label for="model">model</label>
+                            <label htmlFor="model">model</label>
                             <input name="model" type="text"  value={this.state.vehicle.model} onChange={this.handleChange}/>
                         </div>
                         <div>
-                            <label for="color">color</label>
+                            <label htmlFor="color">color</label>
                             <input name="color" type="text"  value={this.state.vehicle.color} onChange={this.handleChange}/>
                         </div>
                         <div className="floor-submit-btn-container">

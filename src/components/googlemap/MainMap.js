@@ -1,5 +1,6 @@
 import React, { Component }from 'react';
 import MapView from './MapView';
+import LocateMap from '../locatemap/LocateMap';
 import ParkedBtn from '../parked-btn/ParkedBtn';
 import MarkerSvg from './MarkerSvg';
 
@@ -43,7 +44,7 @@ class MainMap extends Component {
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(
                 position => {
-                    console.log("Get GeoLocation",position.coords);
+                    // console.log("Get GeoLocation",position.coords);
                     let currentLatLng= {
                         lat: position.coords.latitude,
                         lng: position.coords.longitude
@@ -58,19 +59,27 @@ class MainMap extends Component {
                 }
             )
         } else {
-            console.log('error loading maps')
+           console.log('error loading maps')
         }
         
     }
     render() {
         return(
             <React.Fragment>
-                <MapView 
+                {/* <MapView 
                     isMarkerShown={this.state.isMarkerShown}
                     // onMarkerClick={this.handleMarkerClick}
                     currentLocation={this.state.currentLatLng}
-                 />
+                 /> */}
+                 {/* <LocateMap 
+                 googleMapURL= "https://maps.googleapis.com/maps/api/js?key=AIzaSyBwsoNj-j5kEQ5YAp-u1Zksi-N4tguw0IU"
+                 loadingElement= {<div style={{ height: `100%`}} />}
+                 isMarkerShown={this.state.isMarkerShown}
+                 // onMarkerClick={this.handleMarkerClick}
+                 currentLocation={this.state.currentLatLng}
+              /> */}
                 <ParkedBtn currentLocation={this.state.currentLatLng} />
+
             </React.Fragment>
         )
     }
