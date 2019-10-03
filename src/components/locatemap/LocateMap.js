@@ -1,35 +1,43 @@
-// import React from "react";
-// import ReactDOM from "react-dom";
-// import { compose, withProps } from "recompose";
-// import {
-//   withScriptjs,
-//   withGoogleMap,
-//   GoogleMap,
-//   Marker,
-//   Polyline
-// } from "react-google-maps";
+import React from "react";
+import ReactDOM from "react-dom";
+import { compose, withProps } from "recompose";
+import {
+  withScriptjs,
+  withGoogleMap,
+  GoogleMap,
+  Marker,
+  Polyline
+} from "react-google-maps";
 
-// const LocateMap = compose(
-//   withProps({
-//     googleMapURL:
-//       "https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&v=3.exp&libraries=geometry,drawing,places",
-//     loadingElement: <div style={{ height: `100%` }} />,
-//     containerElement: <div style={{ height: `400px` }} />,
-//     mapElement: <div style={{ height: `100%` }} />
-//   }),
-//   withScriptjs,
-//   withGoogleMap
-// )(props => (
-//   <GoogleMap defaultZoom={7} defaultCenter={{ lat: -34.897, lng: 151.144 }}>
-//     <Polyline path={[{ lat: -34.397, lng: 150.644 }, { lat: -35.397, lng: 151.644 }]}/>
-//   </GoogleMap>
-// ));
+const LocateMap = compose(
+  withProps({
+    googleMapURL:
+      "https://maps.googleapis.com/maps/api/js?key=AIzaSyDVT7Xr5Y8fzM8punj8rix00HjvJnC9KDQ&v=3.exp&libraries=geometry,drawing,places",
+    loadingElement: <div style={{ height: `100%` }} />,
+    containerElement: <div style={{ height: `100vh` }} />,
+    mapElement: <div style={{ height: `100%` }} />
+  }),
+  withScriptjs,
+  withGoogleMap
+)(props => (
+  <GoogleMap defaultZoom={7} defaultCenter={{ lat: -34.897, lng: 151.144 }}>
+    <Polyline path={[{ lat: -34.397, lng: 150.644 }, { lat: -35.397, lng: 151.644 }]}/>
+  </GoogleMap>
+));
 
-//     ReactDOM.render(<MyMapComponent />, document.getElementById("root"));
-//     export default LocateMap;
+    // ReactDOM.render(<LocateMap />, document.getElementById("root"));
+    export default LocateMap;
+
+
+
+
+
+
+
+
 // import React, {Component} from 'react'
 // import {compose, withProps } from 'recompose'
-// import { withScriptjs, withGoogleMap, GoogleMap, Marker, DirectionsRenderer, google, directionsService} from 'react-google-maps'
+// import { withScriptjs, withGoogleMap, GoogleMap, Marker, Polyline} from 'react-google-maps'
 // import mapMarker from '../../icons/mainMarker.svg';
 // import '../googlemap/MapStyles.scss';
 // import MapStyles from'../map-styles/MapStyles';
@@ -98,14 +106,14 @@
 //     withGoogleMap,((props) =>
 //     lifecycle({
 //       componentDidMount() {
-//         const DirectionsService = new window.google.maps.DirectionsService();
+//         const DirectionsService = new google.maps.DirectionsService();
 
 //         DirectionsService.route({
-//           origin: new window.google.maps.LatLng(38.6876176, -90.3251358),
-//           destination: new window.google.maps.LatLng(29.7392, -87.6514100),
-//           travelMode: window.google.maps.TravelMode.WALKING,
+//           origin: new google.maps.LatLng(38.6876176, -90.3251358),
+//           destination: new google.maps.LatLng(29.7392, -87.6514100),
+//           travelMode: google.maps.TravelMode.WALKING,
 //         }, (result, status) => {
-//           if (status === window.google.maps.DirectionsStatus.OK) {
+//           if (status === google.maps.DirectionsStatus.OK) {
 //             this.setState({
 //               directions: result,
 //             });
@@ -127,127 +135,132 @@
 //   export default LocateMap;
 
 
-  import React, { Component } from "react";
-import {google,
-  withGoogleMap,
-  withScriptjs,
-  GoogleMap,
-  DirectionsRenderer
-} from "react-google-maps";
-class LocateMap extends Component {
-
-  constructor(props){
-    super(props)
-    this.state = {
-        currentLatLng: {
-            lat: '',
-            lng: ''
-        },
-        directions: null,
-        isMarkerShown: false
-    }
-}
 
 
-  componentWillUpdate(){
-    this.getGeoLocation();
-  }
+
+
+
+
+
+/*global google*/ 
+// import React, { Component } from "react";
+// import {
+//   withGoogleMap,
+//   withScriptjs,
+//   GoogleMap,
+//   DirectionsRenderer
+// } from "react-google-maps";
+// class LocateMap extends Component {
+
+//   state={
+//     directions:null,
+//     user:{},
+//     savedLocation:{
+//         lat: '',
+//         lng: ''
+//     }
+//   }
+
+
+//   componentWillUpdate(){
+//     this.getGeoLocation();
+//   }
  
-  getGeoLocation = () => {
-    if (navigator.geolocation) {
-        navigator.geolocation.getCurrentPosition(
-            position => {
-                console.log("Get GeoLocation",position.coords);
-                let currentLatLng= {...this.state.currentLocate};
+//   getGeoLocation = () => {
+//     if (navigator.geolocation) {
+//         navigator.geolocation.getCurrentPosition(
+//             position => {
+//                 console.log("Get GeoLocation",position.coords);
+//                 let currentLatLng= {...this.state.currentLocate};
                 
               
-                currentLatLng.lat= position.coords.latitude;
-                currentLatLng.lng= position.coords.longitude;
+//                 currentLatLng.lat= position.coords.latitude;
+//                 currentLatLng.lng= position.coords.longitude;
                 
   
-                this.setState(
-                {
-                  currentLocate:currentLatLng
-                }
-                )
+//                 this.setState(
+//                 {
+//                   currentLocate:currentLatLng
+//                 }
+//                 )
   
-            }
-        )
-    } else {
-        console.log('error loading maps')
-    }
+//             }
+//         )
+//     } else {
+//         console.log('error loading maps')
+//     }
     
-  }
+//   }
   
-  componentDidMount() {
-    this.getGeoLocation();
-    const loggedInUser = 
-      JSON.parse(localStorage.getItem('loggedInUser'));
+//   componentDidMount() {
+//     // this.getGeoLocation();
+//     const loggedInUser = 
+//       JSON.parse(localStorage.getItem('loggedInUser'));
   
-    this.setState(
-      {
-        user:loggedInUser
+//     this.setState(
+//       {
+//         user:loggedInUser
             
-      }
-    );
+//       }
+//     );
 
-    const directionsService = new 
-    window.google.maps.DirectionsService();
+//     const directionsService = new 
+//     window.google.maps.DirectionsService();
     
-    const origin = { lat: -35.397, lng: 151.644  };
-    const destination = { lat: 38.6876176, lng: -90.2251358 };
+//     // const origin = { lat: currentLatLng.lat, lng: currentLatLng.lng };
+//     const destination = { lat: this.state.savedLocation.lat, lng: this.state.savedLocation.lng };
 
-    directionsService.route(
-      {
-        origin: origin,
-        destination: destination,
-        travelMode: window.google.maps.TravelMode.WALKING
-      },
-      (result, status) => {
-        if (status === window.google.maps.DirectionsStatus.OK) {
-          this.setState({
-            directions: result
-          });
-        } else {
-          console.error(`error fetching directions ${result}`);
-        }
-      }
-    );
-  }
+//     directionsService.route(
+//       {
+//         origin: origin,
+//         destination: destination,
+//         travelMode: google.maps.TravelMode.WALKING
+//       },
+//       (result, status) => {
+//         if (status === google.maps.DirectionsStatus.OK) {
+//           this.setState({
+//             directions: result
+//           });
+//         } else {
+//           console.error(`error fetching directions ${result}`);
+//         }
+//       }
+//     );
+//   }
 
-  render() {
-    const GoogleMapExample = withGoogleMap(props => (
-      <GoogleMap
-        // defaultCenter={{ lat: this.state.currentLocate.lat,lng: this.state.currentLocate.lng }}
-        defaultZoom={8}
-        defaultOptions={{
-            // styles: MapStyles,
-            streetViewControl: true,
-            scaleControl: true,
-            mapTypeControl: false,
-            panControl: true,
-            zoomControl: true,
-            // rotateControl: false,
-            fullscreenControl: false
-        }}
-      >
-        <DirectionsRenderer
-          directions={this.state.directions}
-        />
-      </GoogleMap>
-    ));
+//   render() {
+//     const GoogleMapExample = withGoogleMap(props => (
+//       <GoogleMap
+//         // defaultCenter={{ lat: this.state.currentLocate.lat,lng: this.state.currentLocate.lng }}
+//         defaultZoom={8}
+//         defaultOptions={{
+//             // styles: MapStyles,
+//             streetViewControl: true,
+//             scaleControl: true,
+//             mapTypeControl: false,
+//             panControl: true,
+//             zoomControl: true,
+//             // rotateControl: false,
+//             fullscreenControl: false
+//         }}
+//       >
+//         <DirectionsRenderer
+//           directions={this.state.directions}
+//         />
+//       </GoogleMap>
+//     ));
 
-    return (
-      <div>
-        <GoogleMapExample
-          googleMapURL= {"`https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places"}
-          // loadingElement={ <div style={{ height: `100%`} /> }
-          containerElement={<div style={{ height: `500px`, width: "500px" }} />}
-          mapElement={<div style={{ height: `100%` }} />}
-        />
-      </div>
-    );
-  }
-}
+//     return (
+//       <div>
+//         <GoogleMapExample
+//           // googleMapURL= {"`https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places"}
+//           // loadingElement={ <div style={{ height: `100%`} /> }
+//           containerElement={<div style={{ height: `500px`, width: "500px" }} />}
+//           mapElement={<div style={{ height: `100%` }} />}
+//         />
+//       </div>
+//     );
+//   }
+// }
 
-export default LocateMap;
+// export default LocateMap;

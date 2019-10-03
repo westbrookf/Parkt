@@ -1,6 +1,7 @@
 import React from 'react';
 import MainMap from '../googlemap/MainMap';
 import Header from '../header/Header';
+import LocateMap from '../locatemap/LocateMap';
 
 import '../home/HomeStyles.scss';
 
@@ -28,6 +29,8 @@ class Home extends React.Component {
                 <Header {...this.props} /> 
      
                 <MainMap /> 
+                {/* <LocateMap /> */}
+                
             </div>
            </div>
        )

@@ -5,6 +5,8 @@ import  { Button, Dialog, DialogTitle, DialogContent}  from 'react-mdl';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 
+//Components
+import locateBtn from '../locate/locateBtn';
 
 //Component SCSS
 import '../parked-btn/ParkedStyles.scss';
@@ -12,6 +14,7 @@ import '../parked-btn/ParkedStyles.scss';
 
 class ParkedBtn extends Component {
   state={
+    lastUpdate : null,
     user:{},
     savedLocation:{
         email: '',
@@ -25,6 +28,16 @@ class ParkedBtn extends Component {
   }
   componentDidMount(){
     // this.getGeoLocation();
+
+    // axios.get('http://localhost:8080/lastLocationUpdate').then(response => {
+    //   this.setState(
+    //     {
+    //       lastUpdate: response.data
+    //     }
+    //   )
+    // })
+
+
     const loggedInUser = 
     JSON.parse(localStorage.getItem('loggedInUser'));
   
@@ -135,23 +148,20 @@ class ParkedBtn extends Component {
       let parkButton=(
         <Button className="global-btn-style" accent ripple colored raised ripple className="opn-modal-btn global-btn-style" onClick={this.handleOpenDialog}>Park</Button>
       )
-      // if (){
-      //   parkButton = null;
-      //   locateButton = (
-      //     <Button className=" locate-pg-btn-container" accent ripple colored raised ripple>
-      //       <Link  className="locate-pg-btn" to="/Locate">Locate</Link>
-      //     </Button>
-      //   )
-      // }
+      if (this.state.lastUpdate){
+        parkButton = null;
+        locateButton = (
+          {locateBtn}
+        )
+      }
     return ( 
         <div className="btn-container">
           {parkButton}
-          {locateButton}
           {/* <Button className="global-btn-style" accent ripple colored raised ripple className="opn-modal-btn global-btn-style" onClick={this.handleOpenDialog}>Park</Button> */}
           <Dialog className="floor-modal-container" open={this.state.openDialog} onClick={this.handleWindowClose}>
             <DialogTitle className="floor-modal-title">
               <p className="close-floor-form" onClick={this.closeFormX}>X</p>
-              <h3 className="d-title">is this a parking garage?</h3>
+               <h3 className="d-title">is this a parking garage?</h3>
             </DialogTitle>
             <DialogContent className="floor-modal-form-container">
                 {parkedUser}
