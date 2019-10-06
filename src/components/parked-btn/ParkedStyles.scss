@@ -5,29 +5,22 @@
     height: 40px;
     width: 200px;
     position: absolute;
-    // margin-top: -140px;
     top: 80%;
     left: 19%;
 }
 .floor-modal-container{
     left: 8%;
     height: 350px;
-    // width: 100%;
     .floor-modal-title{
-        // background-color: #ff5757;
         @include Background(url(../../images/garage-photo.jpg));
         height: 180px;
         width: 100%;
-        // padding-top: 60px;
-        // border-bottom: 2px solid #007bff;
         .close-floor-form{
             font-size: 24px;
-            // font-weight: lighter;
             color: white;
             float: right;
-            // margin-top: -12px;
-            // margin-right: -10px;
             margin: -22px, -10px, 0, 0;
+            cursor: pointer;
         }
         .d-title{
             font-size: 26px;
@@ -37,10 +30,8 @@
         }
     }
     .floor-modal-form-container{
-        // border: 2px solid black;
         width: 90%;
         height: 160px;
-        // margin-top: 35px;
         margin-left: 15px;
         .floor-form{
             .hidden-inputs{
@@ -62,9 +53,7 @@
                 width: 50%;
                 margin-left: 50px;
                 margin-top: 6px;
-                // border: none;
                 font-size: 34px;
-                // font-weight: lighter;
                 color: #ff5757;
                 text-align: center;
             }

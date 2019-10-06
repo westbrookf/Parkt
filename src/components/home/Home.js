@@ -29,7 +29,6 @@ class Home extends React.Component {
                 <Header {...this.props} /> 
      
                 <MainMap /> 
-                {/* <LocateMap /> */}
                 
             </div>
            </div>

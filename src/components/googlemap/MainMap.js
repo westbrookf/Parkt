@@ -66,14 +66,14 @@ class MainMap extends Component {
     render() {
         return(
             <React.Fragment>
-                {/* <MapView
+                <MapView
                     // googleMapURL= "https://maps.googleapis.com/maps/api/js?key=AIzaSyCgcw6lYTsPaIsHgeqvuXgbBZ-dwgbfUOI"
                     isMarkerShown={this.state.isMarkerShown}
                     // onMarkerClick={this.handleMarkerClick}
                     currentLocation={this.state.currentLatLng}
-                 /> */}
+                 />
 
-                 <LocateMap />
+                 {/* <LocateMap /> */}
                   
                 <ParkedBtn currentLocation={this.state.currentLatLng} />
 

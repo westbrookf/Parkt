@@ -17,8 +17,8 @@ class ParkedBtn extends Component {
     lastUpdate : null,
     user:{},
     savedLocation:{
-        email: '',
-        floor: '',
+      // email: '',
+      floor: '',
         lat: '',
         lng: ''
     }
@@ -27,24 +27,25 @@ class ParkedBtn extends Component {
     this.getGeoLocation();
   }
   componentDidMount(){
-    // this.getGeoLocation();
 
-    // axios.get('http://localhost:8080/lastLocationUpdate').then(response => {
-    //   this.setState(
-    //     {
-    //       lastUpdate: response.data
-    //     }
-    //   )
-    // })
+    axios.get('http://localhost:8080/lastLocationUpdate').then(response => {
+      this.setState(
+        {
+          lastUpdate: response.data
+        }
+      )
+    })
 
 
     const loggedInUser = 
     JSON.parse(localStorage.getItem('loggedInUser'));
-  
+    console.log('loggedInUser');
+    
     this.setState(
         {
             user:loggedInUser
         }
+        
     )
   }
   getGeoLocation = () => {
@@ -89,7 +90,7 @@ class ParkedBtn extends Component {
   parkedCarSubmitHandler = (event) =>{
      event.preventDefault();
      let location= {...this.state.savedLocation}
-    let user = this.state.user.email;
+     location.user = this.state.user.email;
      console.log("park submit with data: ", location);
 
     axios.post('http://localhost:8080/parkedCar',location)
@@ -144,19 +145,20 @@ class ParkedBtn extends Component {
           </div>
         </form>
       )
-      let locateButton = null;
+      let locateButton = false;
       let parkButton=(
         <Button className="global-btn-style" accent ripple colored raised ripple className="opn-modal-btn global-btn-style" onClick={this.handleOpenDialog}>Park</Button>
       )
-      if (this.state.lastUpdate){
-        parkButton = null;
-        locateButton = (
+      if (parkedUser == null){
+        let parkButton = null;
+        let locateButton = (
           {locateBtn}
         )
       }
     return ( 
         <div className="btn-container">
           {parkButton}
+          {/* {locateButton} */}
           {/* <Button className="global-btn-style" accent ripple colored raised ripple className="opn-modal-btn global-btn-style" onClick={this.handleOpenDialog}>Park</Button> */}
           <Dialog className="floor-modal-container" open={this.state.openDialog} onClick={this.handleWindowClose}>
             <DialogTitle className="floor-modal-title">
